@@ -1,0 +1,21 @@
+body {
+    margin: 0 auto;
+    background: #EEEEEE;
+}
+#promoted-products,
+#regular-products {
+    color: rgba(0,0,0,0.87);
+    background-color: rgb(255,255,255);
+    border-radius: 2px;
+    margin: 10px;
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,.25), 0 1px 1px 0 rgba(0,0,0,.15), 0 2px 1px -1px rgba(0,0,0,.12);
+    padding: 10px;
+}
+
+#promoted-products h2,
+#regular-products h2 {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #FF6F00;
+}
+

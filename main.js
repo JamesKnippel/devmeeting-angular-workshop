@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @name Vanilla JavaScript (Task 2)
- * @description Display a list of products using code from previous task
+ * @name Vanilla JavaScript (Task 3)
+ * @description Add a list of promoted product above the regular products from previous task
  */
 class ProductComponent {
   constructor(product) {
@@ -31,28 +31,48 @@ class ProductComponent {
   }
 }
 
+// List of our products (promoted + regular)
 const products = [
   {
     name: 'Vanilla JavaScript',
     description: 'JavaScript is the best framework!',
-    price: 0
+    price: 0,
+    promoted: false
   },
   {
     name: 'TypeScript',
     description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. TypeScript compiles to clean, simple JavaScript code which runs on any browser, in Node.js, or in any JavaScript engine that supports ECMAScript 3(or newer)!!',
-    price: 128
+    price: 128,
+    promoted: false
   },
   {
     name: 'Angular4',
     description: 'One framework, Mobile & Desktop. Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target (Web, mobile web, native mobile and native desktop)!!!',
-    price: 256
+    price: 256,
+    promoted: true
   }
 ];
 
-// Loop via our product list, and create each product instance
-// and append to our body to display
-products.forEach(product => {
-  const component = new ProductComponent(product);
-  document.body.appendChild(component.render());
-});
+// render each product with given parent element
+function renderProduct(parentElement) {
+  return (product) => {
+    const component = new ProductComponent(product);
+    parentElement.appendChild(component.render());
+  }
+}
+
+// Get parent elements for both `promoted` and `regular` product lists
+const promotedProductsElement = document.querySelector('#promoted-products');
+const regularProductsElement = document.querySelector('#regular-products');
+
+// render `promoted` products
+products.filter(product => product.promoted).forEach(renderProduct(promotedProductsElement));
+
+// render `regular` products
+products.filter(product => !product.promoted).forEach(renderProduct(regularProductsElement));
+
+
+
+
+
 
