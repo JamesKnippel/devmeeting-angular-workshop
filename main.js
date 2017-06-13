@@ -1,6 +1,5 @@
 'use strict';
 
-console.log('ES6 Vanilla JS 1 is loaded');
 /**
  * @description Using Vanilla JS and raw DOM operations to display single product tile
  */
