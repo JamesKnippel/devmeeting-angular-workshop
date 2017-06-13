@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * @name Vanilla JavaScript (Task 1)
- * @description Using Vanilla JS and raw DOM operations to display single product tile
+ * @name Vanilla JavaScript (Task 2)
+ * @description Display a list of products using code from previous task
  */
 class ProductComponent {
   constructor(product) {
@@ -31,15 +31,28 @@ class ProductComponent {
   }
 }
 
-const product = {
-  name: 'Vanilla JavaScript (ES6)',
-  description: 'JavaScript is the best framework!',
-  price: 0
-};
+const products = [
+  {
+    name: 'Vanilla JavaScript',
+    description: 'JavaScript is the best framework!',
+    price: 0
+  },
+  {
+    name: 'TypeScript',
+    description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. TypeScript compiles to clean, simple JavaScript code which runs on any browser, in Node.js, or in any JavaScript engine that supports ECMAScript 3(or newer)!!',
+    price: 128
+  },
+  {
+    name: 'Angular4',
+    description: 'One framework, Mobile & Desktop. Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target (Web, mobile web, native mobile and native desktop)!!!',
+    price: 256
+  }
+];
 
-// create a component instance
-const component = new ProductComponent(product);
-
-// append product component instance to DOM
-document.body.appendChild(component.render());
+// Loop via our product list, and create each product instance
+// and append to our body to display
+products.forEach(product => {
+  const component = new ProductComponent(product);
+  document.body.appendChild(component.render());
+});
 
