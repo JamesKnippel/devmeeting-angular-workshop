@@ -2,8 +2,7 @@ body {
     margin: 0 auto;
     background: #EEEEEE;
 }
-#promoted-products,
-#regular-products {
+section {
     color: rgba(0,0,0,0.87);
     background-color: rgb(255,255,255);
     border-radius: 2px;
@@ -12,8 +11,7 @@ body {
     padding: 10px;
 }
 
-#promoted-products h2,
-#regular-products h2 {
+section h2 {
     text-decoration-line: underline;
     text-decoration-style: wavy;
     text-decoration-color: #FF6F00;

@@ -1,33 +1,56 @@
 'use strict';
 
 /**
- * @name Vanilla JavaScript (Task 3)
- * @description Add a list of promoted product above the regular products from previous task
+ * @name Vanilla JavaScript (Task 4)
+ * @description Refactor your previous code. Try to identify repetitions and isolate component's responsibility.
+ *
+ * Hints:
+ * - `ProductCompnoent` should be only respnsible for rendering a product component
+ * - `AppComponent` takes a list of products and render them.
  */
 class ProductComponent {
   constructor(product) {
     this.product = product;
   }
 
+  // render a single product tile with given
+  // product name, description and product
   render() {
-    // create a product container element
-    const productContainer = document.createElement('div');
-    // create a name element
-    const name = document.createElement('h3');
-    // create a description element
-    const description = document.createElement('p');
-    // create a price element
-    const price = document.createElement('span');
+    return el('div',
+      el('h3', this.product.name),
+      el('p', this.product.description),
+      el('span', `$${this.product.price}`)
+    );
+  }
+}
 
-    name.textContent = this.product.name;
-    description.textContent = this.product.description;
-    price.textContent = `$${this.product.price}`;
+class AppComponent {
+  constructor(products) {
+    this.products = products;
+  }
 
-    productContainer.appendChild(name);
-    productContainer.appendChild(description);
-    productContainer.appendChild(price);
+  renderProduct(product) {
+    const component = new ProductComponent(product);
+    return component.render();
+  }
 
-    return productContainer;
+  // create a parent section element with both `promoted` and `regular`
+  // container sections
+  render() {
+    return el('div',
+      el('section',
+        el('h2', 'Promoted Prodcuts'),
+        ...this.products
+          .filter(product => product.promoted)
+          .map(this.renderProduct)
+      ),
+      el('section',
+        el('h2', 'Regular Products'),
+        ...this.products
+          .filter(product => !product.promoted)
+          .map(this.renderProduct)
+      )
+    );
   }
 }
 
@@ -53,26 +76,26 @@ const products = [
   }
 ];
 
-// render each product with given parent element
-function renderProduct(parentElement) {
-  return (product) => {
-    const component = new ProductComponent(product);
-    parentElement.appendChild(component.render());
-  }
+const app = new AppComponent(products);
+document.body.appendChild(createElement(app.render()));
+
+
+
+//=========================================================
+//  Helpers functions
+//---------------------------------------------------------
+function createElement(node) {
+  if (typeof node === 'string') return document.createTextNode(node);
+
+  const el = document.createElement(node.tagName);
+
+  node.children
+    .map(createElement)
+    .forEach(child => el.appendChild(child));
+
+  return el;
 }
 
-// Get parent elements for both `promoted` and `regular` product lists
-const promotedProductsElement = document.querySelector('#promoted-products');
-const regularProductsElement = document.querySelector('#regular-products');
-
-// render `promoted` products
-products.filter(product => product.promoted).forEach(renderProduct(promotedProductsElement));
-
-// render `regular` products
-products.filter(product => !product.promoted).forEach(renderProduct(regularProductsElement));
-
-
-
-
-
-
+function el(tagName, ...children) {
+  return { tagName, children };
+}
