@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * @name Vanilla JavaScript (Task 1)
  * @description Using Vanilla JS and raw DOM operations to display single product tile
  */
 class ProductComponent {
