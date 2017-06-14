@@ -15,7 +15,7 @@
     "allowSyntheticDefaultImports": true
   },
   "files": [
-    "./main.ts"
+    "./app/main.ts"
   ],
   "exclude": [
     "./node_modules"

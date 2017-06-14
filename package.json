@@ -1,12 +1,11 @@
 {
   "name": "devmeeting-angular-workshop",
   "version": "1.0.0",
-  "description": "TypeScript basics 1",
+  "description": "TypeScript basics 2",
   "author": {
     "name": "Jay Kan",
     "email": "leicasper@gmail.com"
   },
-  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -w --colors"

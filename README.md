@@ -1,19 +1,15 @@
-# devmeeting-angular-workshop
+# TypeScript Basics 2
 
-## Table of Contents
-1. Vanilla JavaScript
-2. TypeScript Basic
-3. Angular2 Basic
-4. Components
-5. Events
-6. Pipes
-7. Service and Dependency Injection 
-8. Http and RxJS
-9. Forms
-10. Routing
-11. Testing
-12. Directives
-13. Cart
+## Getting Started 
+### Dependencies Prerequisites
+> Make sure you have Node **version >= 6.9** and NPM **>= 3**
+
+### Running Development
+Once you have installed all prerequisites,
+
+* `npm install` to install all dependencies
+* `npm start` to build our app in watch mode
+* Open your fav browser that loads index.html
 
 ## License
 MIT © [Jay Kan](https://github.com/JayKan)

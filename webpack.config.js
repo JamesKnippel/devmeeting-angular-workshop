@@ -20,7 +20,7 @@ module.exports = {
    *
    * See: http://webpack.github.io/docs/configuration.html#entry
    */
-  entry: './main.ts',
+  entry: './app/main.ts',
 
   /**
    * Options affecting the output of the compilation.
@@ -35,6 +35,12 @@ module.exports = {
      * See: http://webpack.github.io/docs/configuration.html#output-filename
      */
     filename: '[name].js',
+
+    /**
+     * The output directory as absolute path (required).
+     *
+     * See: http://webpack.github.io/docs/configuration.html#output-path
+     */
     path: path.resolve('./public')
   },
 
@@ -58,7 +64,7 @@ module.exports = {
    * See: http://webpack.github.io/docs/configuration.html#module
    */
   module: {
-    loaders: [
+    rules: [
       /**
        * Typescript loader support for .ts
        */
