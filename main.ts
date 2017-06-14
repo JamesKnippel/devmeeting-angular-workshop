@@ -1,21 +1,27 @@
-'use strict';
-
 /**
- * @name Vanilla JavaScript (Task 4)
- * @description Refactor your previous code. Try to identify repetitions and isolate component's responsibility.
+ * @name TypeScript Basics (Task 1)
+ * @description Prepare TypeScript configuration. Change extension of your `.js` files to `.ts`
+ * to check whether code compiles properly.
  *
  * Hints:
- * - `ProductCompnoent` should be only respnsible for rendering a product component
- * - `AppComponent` takes a list of products and render them.
+ * - Define interfaces and apply interfaces
+ * - Add types for classes methods and properties and return types
  */
+interface IProduct {
+  name: string;
+  description: string;
+  price: number;
+  promoted?: boolean;
+}
+type CustomElement = string | { tagName: string, children: CustomElement[] };
+
+
 class ProductComponent {
-  constructor(product) {
-    this.product = product;
-  }
+  constructor(private product: IProduct) {}
 
   // render a single product tile with given
   // product name, description and product
-  render() {
+  render(): CustomElement {
     return el('div',
       el('h3', this.product.name),
       el('p', this.product.description),
@@ -25,21 +31,19 @@ class ProductComponent {
 }
 
 class AppComponent {
-  constructor(products) {
-    this.products = products;
-  }
+  constructor(private products: IProduct[]) {}
 
-  renderProduct(product) {
+  renderProduct(product: IProduct): CustomElement {
     const component = new ProductComponent(product);
     return component.render();
   }
 
   // create a parent section element with both `promoted` and `regular`
   // container sections
-  render() {
+  render(): CustomElement {
     return el('div',
       el('section',
-        el('h2', 'Promoted Prodcuts'),
+        el('h2', 'Promoted Products'),
         ...this.products
           .filter(product => product.promoted)
           .map(this.renderProduct)
@@ -55,7 +59,7 @@ class AppComponent {
 }
 
 // List of our products (promoted + regular)
-const products = [
+const products: IProduct[] = [
   {
     name: 'Vanilla JavaScript',
     description: 'JavaScript is the best framework!',
@@ -84,7 +88,7 @@ document.body.appendChild(createElement(app.render()));
 //=========================================================
 //  Helpers functions
 //---------------------------------------------------------
-function createElement(node) {
+function createElement(node: CustomElement): HTMLElement | Text {
   if (typeof node === 'string') return document.createTextNode(node);
 
   const el = document.createElement(node.tagName);
@@ -96,6 +100,6 @@ function createElement(node) {
   return el;
 }
 
-function el(tagName, ...children) {
+function el(tagName: string, ...children: CustomElement[]): CustomElement {
   return { tagName, children };
 }
