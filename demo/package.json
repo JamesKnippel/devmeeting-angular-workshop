@@ -1,7 +1,7 @@
 {
   "name": "devmeeting-angular-workshop",
   "version": "1.0.0",
-  "description": "Angular4 Components (Task 4)",
+  "description": "Angular4 Events (Task 1)",
   "author": {
     "name": "Jay Kan",
     "email": "leicasper@gmail.com"
@@ -17,7 +17,7 @@
   "license": "MIT",
   "keywords": [
     "Angular4",
-    "Angular4 Components"
+    "Angular4 Events"
   ],
   "dependencies": {
     "@angular/animations": "^4.0.0",

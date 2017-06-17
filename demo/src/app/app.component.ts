@@ -8,10 +8,10 @@ import { IProduct } from './app.module';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public title: string = 'Angular4 Components';
-  public promotedProducts: Array<IProduct> = [];
-  public regularProducts: Array<IProduct> = [];
-  private products: IProduct[] = [
+  public title: string = 'Angular4 Events';
+  public products: Array<IProduct> = [];
+
+  private allProducts: Array<IProduct> = [
     {
       name: 'Secrets of the JavaScript Ninja',
       description: `For anyone serious about web development, it's not enough to be a decent JavaScript coder. They need to be ninja-stealthy, efficient, and ready for anything. Secrets of the JavaScript Ninja, Second Edition dives below the surface and helps readers understand the deceptively-complex world of JavaScript and browser-based application development. It skips the basics, and dives into core JavaScript concepts such as functions, closures, objects, prototypes, promises, and so on.`,
@@ -62,10 +62,11 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  constructor() {}
-
   ngOnInit(): void {
-    this.promotedProducts = this.products.filter((p: IProduct) => p.promoted);
-    this.regularProducts = this.products.filter((p: IProduct) => !p.promoted);
+    this.products = this.allProducts;
+  }
+
+  onSearch(predicate: string): void {
+    this.products = this.allProducts.filter((p: IProduct) => p.name.includes(predicate));
   }
 }

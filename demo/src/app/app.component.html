@@ -1,14 +1,11 @@
 <div class="container">
   <h2>{{ title }}</h2>
 
-  <product-list-cmp
-    [header]="'Promoted Products'"
-    [products]="promotedProducts">
-  </product-list-cmp>
+  <search-cmp (search)="onSearch($event)"></search-cmp>
 
   <product-list-cmp
-    [header]="'Regular Products'"
-    [products]="regularProducts">
+    [header]="'All Products'"
+    [products]="products">
   </product-list-cmp>
 
 </div>

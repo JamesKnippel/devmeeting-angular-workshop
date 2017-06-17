@@ -1,4 +1,4 @@
-# Components
+# Events
 
 ## Getting Started 
 ### Dependencies Prerequisites
