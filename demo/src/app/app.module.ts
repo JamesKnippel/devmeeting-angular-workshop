@@ -6,15 +6,18 @@ import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SearchComponent } from './components/search/search.component';
+import { SortButtonComponent } from './components/sort-button/sort-button.component';
 
-export { IProduct, IProductPropertyValue } from './interfaces';
+export * from './interfaces';
+export * from './utils';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     ProductListComponent,
-    SearchComponent
+    SearchComponent,
+    SortButtonComponent
   ],
   imports: [
     BrowserModule,

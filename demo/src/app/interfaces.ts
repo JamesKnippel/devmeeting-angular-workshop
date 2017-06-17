@@ -8,3 +8,8 @@ export interface IProduct {
 }
 
 export type IProductPropertyValue = string | number | boolean | string[];
+
+export interface ISortOptions {
+  property: string;
+  reverse: boolean;
+}

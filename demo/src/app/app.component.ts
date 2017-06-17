@@ -1,11 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { IProduct, IProductPropertyValue } from './app.module';
-import * as _ from 'lodash';
-
-export interface ISortOptions {
-  by: string;
-  reverse: boolean;
-}
+import { IProduct, ISortOptions, sortItems, filterItems } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +10,10 @@ export interface ISortOptions {
 export class AppComponent implements OnInit {
   public title: string = 'Angular4 Events';
   public products: Array<IProduct> = [];
-
   public sort: ISortOptions = {
-    by: 'price',
-    reverse: false
+    property: 'price',
+    reverse: true
   };
-
   private allProducts: Array<IProduct> = [
     {
       name: 'Secrets of the JavaScript Ninja',
@@ -74,41 +66,17 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.products = this.sortItems(this.allProducts, this.sort.by, this.sort.reverse);
+    this.products = sortItems(this.allProducts, this.sort);
   }
 
   onSearch(predicate: string): void {
-    this.products = this.sortItems(
-      this.filterItems(this.allProducts, predicate),
-      this.sort.by,
-      this.sort.reverse
-    );
+    this.products = sortItems(filterItems(this.allProducts, predicate), this.sort);
   }
 
   onSort(sortBy: string): void {
+    console.log('onSOrt: ', sortBy);
     this.sort.reverse = !this.sort.reverse;
-    this.sort.by = sortBy;
-    this.products = this.sortItems(this.products, this.sort.by, this.sort.reverse);
+    this.sort.property = sortBy;
+    this.products = sortItems(this.products, this.sort);
   }
-
-  private filterItems(items: IProduct[], predicate: string): any {
-    return items.filter((p: IProduct) => {
-      const values: Array<IProductPropertyValue> = this.getValues(p).map(String).map(this.toLowerCase);
-      return values.some((value: string) => value.includes(predicate.toLowerCase()));
-    })
-  }
-
-  private sortItems(items: Array<IProduct>, prop: string, reverse: boolean): Array<IProduct> {
-    const sortedItems = _.sortBy(items, prop);
-
-    return reverse
-      ? sortedItems.reverse()
-      : sortedItems;
-  }
-
-  private getValues(product: IProduct): Array<IProductPropertyValue> {
-    return Object.keys(product).map((key: string) => product[key]);
-  }
-
-  private toLowerCase(value: string) { return value.toLowerCase() }
 }
