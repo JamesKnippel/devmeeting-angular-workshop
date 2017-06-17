@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'search-cmp',
@@ -6,10 +7,13 @@ import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/cor
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
+  public searchInput: FormControl = new FormControl('');
   @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
-  searching(value: string): void {
-    this.search.emit(value);
+  ngOnInit(): void {
+    this.searchInput.valueChanges.subscribe((value: string) => {
+      this.search.emit(value);
+    });
   }
 }

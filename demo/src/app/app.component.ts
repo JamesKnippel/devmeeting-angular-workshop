@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { IProduct } from './app.module';
+import { IProduct, IProductPropertyValue } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -66,7 +66,14 @@ export class AppComponent implements OnInit {
     this.products = this.allProducts;
   }
 
+  getValues(product: IProduct): Array<IProductPropertyValue> {
+    return Object.keys(product).map((key: string) => product[key]);
+  }
+
   onSearch(predicate: string): void {
-    this.products = this.allProducts.filter((p: IProduct) => p.name.includes(predicate));
+    this.products = this.allProducts.filter((p: IProduct) => {
+      const values: Array<IProductPropertyValue> = this.getValues(p);
+      return values.some((value: IProductPropertyValue) => String(value).includes(predicate))
+    });
   }
 }
