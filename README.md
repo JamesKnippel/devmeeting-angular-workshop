@@ -1,4 +1,4 @@
-# Pipes
+# Services and Dependency Injection
 
 ## Getting Started 
 ### Dependencies Prerequisites

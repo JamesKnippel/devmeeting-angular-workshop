@@ -1,21 +1,8 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { IProduct, ISortOptions } from './app.module';
+import { IProduct } from '../app.module';
 
-@Component({
-  selector: 'app-root',
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  public title: string = 'Angular4 Services and Dependency Injection';
-  public products: Array<IProduct> = [];
-  public sort: ISortOptions = {
-    property: 'price',
-    reverse: false
-  };
-  public predicate: string = '';
-  private allProducts: Array<IProduct> = [
+export class ProductsService {
+
+  private products: Array<IProduct> = [
     {
       name: 'Secrets of the JavaScript Ninja',
       description: `For anyone serious about web development, it's not enough to be a decent JavaScript coder. They need to be ninja-stealthy, efficient, and ready for anything. Secrets of the JavaScript Ninja, Second Edition dives below the surface and helps readers understand the deceptively-complex world of JavaScript and browser-based application development. It skips the basics, and dives into core JavaScript concepts such as functions, closures, objects, prototypes, promises, and so on.`,
@@ -66,18 +53,7 @@ export class AppComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
-    this.products = this.allProducts.slice();
-  }
-
-  onSearch(predicate: string): void {
-    this.predicate = predicate;
-  }
-
-  onSort(sortBy: string): void {
-    this.sort = {
-      property: sortBy,
-      reverse: !this.sort.reverse
-    };
+  getProducts(): Array<IProduct> {
+    return this.products.slice();
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "devmeeting-angular-workshop",
   "version": "1.0.0",
-  "description": "Angular4 Pipes (Task 3)",
+  "description": "Angular4 Services and Dependency Injection (Task 1)",
   "author": {
     "name": "Jay Kan",
     "email": "leicasper@gmail.com"
@@ -17,7 +17,8 @@
   "license": "MIT",
   "keywords": [
     "Angular4",
-    "Angular4 Pipes"
+    "Angular4 Services",
+    "Dependency Injection"
   ],
   "dependencies": {
     "@angular/animations": "^4.0.0",
