@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { IProduct, ISortOptions, sortItems, filterItems } from './app.module';
+import { IProduct, ISortOptions, sortItems } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
     property: 'price',
     reverse: true
   };
+  public predicate: string = '';
   private allProducts: Array<IProduct> = [
     {
       name: 'Secrets of the JavaScript Ninja',
@@ -70,7 +71,7 @@ export class AppComponent implements OnInit {
   }
 
   onSearch(predicate: string): void {
-    this.products = sortItems(filterItems(this.allProducts, predicate), this.sort);
+    this.predicate = predicate;
   }
 
   onSort(sortBy: string): void {
