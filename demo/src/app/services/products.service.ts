@@ -1,7 +1,8 @@
+import { Injectable } from '@angular/core';
 import { IProduct } from '../app.module';
 
+@Injectable()
 export class ProductsService {
-
   private products: Array<IProduct> = [
     {
       name: 'Secrets of the JavaScript Ninja',

@@ -9,6 +9,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SortButtonComponent } from './components/sort-button/sort-button.component';
 import { FilterElementsPipe } from './pipes/filterElements.pipe';
 import { SortElementsPipe } from './pipes/sortElements.pipe';
+import { ProductsService } from './services/products.service';
 
 export * from './interfaces';
 export * from './utils';
@@ -28,7 +29,9 @@ export * from './utils';
     BrowserModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    ProductsService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
