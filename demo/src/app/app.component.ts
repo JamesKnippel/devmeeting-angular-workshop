@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { IProduct, IProductPropertyValue } from './app.module';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { IProduct, IProductPropertyValue } from './app.module';
 export class AppComponent implements OnInit {
   public title: string = 'Angular4 Events';
   public products: Array<IProduct> = [];
+  public reverse: boolean = true;
 
   private allProducts: Array<IProduct> = [
     {
@@ -19,14 +21,6 @@ export class AppComponent implements OnInit {
       author: 'John Resig, Bear Bibeault, and Josip Maras',
       promoted: false,
       tags: ['Master', 'JavaScript']
-    },
-    {
-      name: 'JavaScript: The Good Parts',
-      description: `Most programming languages contain good and bad parts, but JavaScript has more than its share of the bad, having been developed and released in a hurry before it could be refined. This authoritative book scrapes away these bad features to reveal a subset of JavaScript that's more reliable, readable, and maintainable than the language as a whole—a subset you can use to create truly extensible and efficient code. Considered the JavaScript expert by many people in the development community, author Douglas Crockford identifies the abundance of good ideas that make JavaScript an outstanding object-oriented programming language-ideas such as functions, loose typing, dynamic objects, and an expressive object literal notation.`,
-      price: 16.26,
-      author: 'Douglas Crockford',
-      promoted: false,
-      tags: ['JavaScript', 'Good Parts']
     },
     {
       name: `You Don't Know JS: Scope & Closures`,
@@ -45,14 +39,6 @@ export class AppComponent implements OnInit {
       tags: ['JavaScript', 'Function', 'Object Prototypes']
     },
     {
-      name: `You Don't Know JS: ES6 & Beyond`,
-      description: `As part of the "You Don’t Know JS" series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built. Like other books in this series, You Don’t Know JS: ES6 & Beyond dives into trickier parts of the language that many JavaScript programmers either avoid or know nothing about. Armed with this knowledge, you can achieve true JavaScript mastery.`,
-      price: 17.54,
-      author: 'Kyle Simpson',
-      promoted: true,
-      tags: ['JavaScript', 'ES6', 'ES7']
-    },
-    {
       name: `The Principles of Object-Oriented JavaScript`,
       description: `If you've used a more traditional object-oriented language, such as C++ or Java, JavaScript probably doesn't seem object-oriented at all. It has no concept of classes, and you don’t even need to define any objects in order to write code. But don’t be fooled—JavaScript is an incredibly powerful and expressive object-oriented language that puts many design decisions right into your hands. In The Principles of Object-Oriented JavaScript, Nicholas C. Zakas thoroughly explores JavaScript’s object-oriented nature, revealing the language’s unique implementation of inheritance and other key characteristics. `,
       price: 16.35,
@@ -60,6 +46,22 @@ export class AppComponent implements OnInit {
       promoted: false,
       tags: ['Object-Oriented Design', 'JavaScript']
     },
+    {
+      name: 'JavaScript: The Good Parts',
+      description: `Most programming languages contain good and bad parts, but JavaScript has more than its share of the bad, having been developed and released in a hurry before it could be refined. This authoritative book scrapes away these bad features to reveal a subset of JavaScript that's more reliable, readable, and maintainable than the language as a whole—a subset you can use to create truly extensible and efficient code. Considered the JavaScript expert by many people in the development community, author Douglas Crockford identifies the abundance of good ideas that make JavaScript an outstanding object-oriented programming language-ideas such as functions, loose typing, dynamic objects, and an expressive object literal notation.`,
+      price: 16.26,
+      author: 'Douglas Crockford',
+      promoted: false,
+      tags: ['JavaScript', 'Good Parts']
+    },
+    {
+      name: `You Don't Know JS: ES6 & Beyond`,
+      description: `As part of the "You Don’t Know JS" series, this compact guide focuses on new features available in ECMAScript 6 (ES6), the latest version of the standard upon which JavaScript is built. Like other books in this series, You Don’t Know JS: ES6 & Beyond dives into trickier parts of the language that many JavaScript programmers either avoid or know nothing about. Armed with this knowledge, you can achieve true JavaScript mastery.`,
+      price: 17.54,
+      author: 'Kyle Simpson',
+      promoted: true,
+      tags: ['JavaScript', 'ES6', 'ES7']
+    }
   ];
 
   ngOnInit(): void {
@@ -71,6 +73,19 @@ export class AppComponent implements OnInit {
       const values: Array<IProductPropertyValue> = this.getValues(p).map(String).map(this.toLowerCase);
       return values.some((value: string) => value.includes(predicate.toLowerCase()))
     });
+  }
+
+  onSort(): void {
+    this.reverse = !this.reverse;
+    this.products = this.sortItems(this.products, this.reverse);
+  }
+
+  private sortItems(items: Array<IProduct>, reverse: boolean): Array<IProduct> {
+    const sortedItems = _.sortBy(items, 'price');
+
+    return reverse
+      ? sortedItems.reverse()
+      : sortedItems;
   }
 
   private getValues(product: IProduct): Array<IProductPropertyValue> {

@@ -3,6 +3,10 @@
 
   <search-cmp (search)="onSearch($event)"></search-cmp>
 
+  <button (click)="onSort()" class="btn btn-default">
+    Price
+  </button>
+
   <product-list-cmp
     [header]="'Product Listing'"
     [products]="products">

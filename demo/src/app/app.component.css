@@ -7,3 +7,7 @@ app-root h3 {
     text-decoration-style: wavy;
     text-decoration-color: #FF6F00;
 }
+
+app-root button {
+    margin-top: 10px;
+}
