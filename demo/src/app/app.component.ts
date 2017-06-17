@@ -2,6 +2,11 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { IProduct, IProductPropertyValue } from './app.module';
 import * as _ from 'lodash';
 
+export interface ISortOptions {
+  by: string;
+  reverse: boolean;
+}
+
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
@@ -11,7 +16,11 @@ import * as _ from 'lodash';
 export class AppComponent implements OnInit {
   public title: string = 'Angular4 Events';
   public products: Array<IProduct> = [];
-  public reverse: boolean = true;
+
+  public sort: ISortOptions = {
+    by: 'price',
+    reverse: false
+  };
 
   private allProducts: Array<IProduct> = [
     {
@@ -65,19 +74,21 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.products = this.sortItems(this.allProducts, this.reverse);
+    this.products = this.sortItems(this.allProducts, this.sort.by, this.sort.reverse);
   }
 
   onSearch(predicate: string): void {
     this.products = this.sortItems(
       this.filterItems(this.allProducts, predicate),
-      this.reverse
+      this.sort.by,
+      this.sort.reverse
     );
   }
 
-  onSort(): void {
-    this.reverse = !this.reverse;
-    this.products = this.sortItems(this.products, this.reverse);
+  onSort(sortBy: string): void {
+    this.sort.reverse = !this.sort.reverse;
+    this.sort.by = sortBy;
+    this.products = this.sortItems(this.products, this.sort.by, this.sort.reverse);
   }
 
   private filterItems(items: IProduct[], predicate: string): any {
@@ -87,8 +98,8 @@ export class AppComponent implements OnInit {
     })
   }
 
-  private sortItems(items: Array<IProduct>, reverse: boolean): Array<IProduct> {
-    const sortedItems = _.sortBy(items, 'price');
+  private sortItems(items: Array<IProduct>, prop: string, reverse: boolean): Array<IProduct> {
+    const sortedItems = _.sortBy(items, prop);
 
     return reverse
       ? sortedItems.reverse()

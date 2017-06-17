@@ -3,8 +3,17 @@
 
   <search-cmp (search)="onSearch($event)"></search-cmp>
 
-  <button (click)="onSort()" class="btn btn-default">
-    <i class="glyphicon glyphicon-arrow-{{ reverse ? 'up' : 'down' }}"></i>
+  <button (click)="onSort('name')" class="btn btn-default">
+    <i class="glyphicon glyphicon-arrow-{{ sort.reverse ? 'down' : 'up' }}"
+       *ngIf="sort.by === 'name'">
+    </i>
+    Name
+  </button>
+
+  <button (click)="onSort('price')" class="btn btn-default">
+    <i class="glyphicon glyphicon-arrow-{{ sort.reverse ? 'up' : 'down' }}"
+       *ngIf="sort.by === 'price'">
+    </i>
     Price
   </button>
 
