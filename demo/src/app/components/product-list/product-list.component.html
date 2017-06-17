@@ -1,0 +1,6 @@
+<h3>{{ header }}</h3>
+<div class="list-group">
+  <div class="list-group-item" *ngFor="let product of products">
+    <product-cmp [product]="product"></product-cmp>
+  </div>
+</div>

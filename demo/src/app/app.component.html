@@ -1,19 +1,15 @@
 <div class="container">
   <h2>{{ title }}</h2>
 
-  <h3>Promoted Products</h3>
-  <div class="list-group">
-    <div class="list-group-item" *ngFor="let product of promotedProducts">
-      <product-cmp [product]="product"></product-cmp>
-    </div>
-  </div>
+  <product-list-cmp
+    [header]="'Promoted Products'"
+    [products]="promotedProducts">
+  </product-list-cmp>
 
-  <h3>Regular Products</h3>
-  <div class="list-group">
-    <div class="list-group-item" *ngFor="let product of regularProducts">
-      <product-cmp [product]="product"></product-cmp>
-    </div>
-  </div>
+  <product-list-cmp
+    [header]="'Regular Products'"
+    [products]="regularProducts">
+  </product-list-cmp>
 
 </div>
 
