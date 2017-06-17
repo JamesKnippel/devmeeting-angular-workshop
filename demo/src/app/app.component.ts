@@ -66,14 +66,16 @@ export class AppComponent implements OnInit {
     this.products = this.allProducts;
   }
 
-  getValues(product: IProduct): Array<IProductPropertyValue> {
+  onSearch(predicate: string): void {
+    this.products = this.allProducts.filter((p: IProduct) => {
+      const values: Array<IProductPropertyValue> = this.getValues(p).map(String).map(this.toLowerCase);
+      return values.some((value: string) => value.includes(predicate.toLowerCase()))
+    });
+  }
+
+  private getValues(product: IProduct): Array<IProductPropertyValue> {
     return Object.keys(product).map((key: string) => product[key]);
   }
 
-  onSearch(predicate: string): void {
-    this.products = this.allProducts.filter((p: IProduct) => {
-      const values: Array<IProductPropertyValue> = this.getValues(p);
-      return values.some((value: IProductPropertyValue) => String(value).includes(predicate))
-    });
-  }
+  private toLowerCase(value: string) { return value.toLowerCase() }
 }
