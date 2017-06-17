@@ -2,8 +2,8 @@
 
 ## Table of Contents
 1. Vanilla JavaScript
-2. TypeScript Basic
-3. Angular2 Basic
+2. TypeScript Basics
+3. Angular4 Basics
 4. Components
 5. Events
 6. Pipes
