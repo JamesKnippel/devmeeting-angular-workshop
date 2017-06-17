@@ -74,7 +74,6 @@ export class AppComponent implements OnInit {
   }
 
   onSort(sortBy: string): void {
-    console.log('onSOrt: ', sortBy);
     this.sort.reverse = !this.sort.reverse;
     this.sort.property = sortBy;
     this.products = sortItems(this.products, this.sort);
