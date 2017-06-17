@@ -1,8 +1,8 @@
 import { IProduct } from './interfaces';
-import { createElement } from './utils';
+import { createElement, el } from './utils';
 import { AppComponent } from './components/app.component';
 
-console.log('TypeScript basics 2');
+console.log('TypeScript basics 3 (Add a toggle button)');
 
 // List of our products (promoted + regular)
 const products: IProduct[] = [
@@ -27,4 +27,27 @@ const products: IProduct[] = [
 ];
 
 const app = new AppComponent(products);
-document.body.appendChild(createElement(app.render()));
+let appRoot = createElement(app.render());
+
+// Create a toggle button
+const toggleButton = createElement(el('button', 'Toggle Promoted'));
+
+document.body.appendChild(toggleButton); // add toggle button to the body
+document.body.appendChild(appRoot); // add appRoot to the body
+
+
+// attach event listener to button when it clicks
+document.querySelector('button').addEventListener('click', () => {
+
+  // remove everything except toggle button
+  document.body.removeChild(appRoot);
+
+  // reset `showPromoted` status
+  app.togglePromoted();
+
+  // re-create appRoot element
+  appRoot = createElement(app.render());
+
+  // re-render our app component
+  document.body.appendChild(appRoot);
+});
