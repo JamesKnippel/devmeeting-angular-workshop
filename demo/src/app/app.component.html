@@ -11,7 +11,7 @@
 
   <product-list-cmp
     [header]="'Product Listing'"
-    [products]="products | filterElements: predicate"
+    [products]="products | filterElements:predicate | sortElements:sort"
   ></product-list-cmp>
 
 </div>

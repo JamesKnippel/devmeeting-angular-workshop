@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { IProduct, ISortOptions, sortItems } from './app.module';
+import { IProduct, ISortOptions } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,11 @@ import { IProduct, ISortOptions, sortItems } from './app.module';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public title: string = 'Angular4 Events';
+  public title: string = 'Angular4 Pipes';
   public products: Array<IProduct> = [];
   public sort: ISortOptions = {
     property: 'price',
-    reverse: true
+    reverse: false
   };
   public predicate: string = '';
   private allProducts: Array<IProduct> = [
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.products = sortItems(this.allProducts, this.sort);
+    this.products = this.allProducts.slice();
   }
 
   onSearch(predicate: string): void {
@@ -75,8 +75,9 @@ export class AppComponent implements OnInit {
   }
 
   onSort(sortBy: string): void {
-    this.sort.reverse = !this.sort.reverse;
-    this.sort.property = sortBy;
-    this.products = sortItems(this.products, this.sort);
+    this.sort = {
+      property: sortBy,
+      reverse: !this.sort.reverse
+    };
   }
 }

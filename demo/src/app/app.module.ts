@@ -8,6 +8,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { SearchComponent } from './components/search/search.component';
 import { SortButtonComponent } from './components/sort-button/sort-button.component';
 import { FilterElementsPipe } from './pipes/filterElements.pipe';
+import { SortElementsPipe } from './pipes/sortElements.pipe';
 
 export * from './interfaces';
 export * from './utils';
@@ -20,7 +21,8 @@ export * from './utils';
     SearchComponent,
     SortButtonComponent,
 
-    FilterElementsPipe
+    FilterElementsPipe,
+    SortElementsPipe,
   ],
   imports: [
     BrowserModule,
