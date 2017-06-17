@@ -4,4 +4,5 @@ export interface IProduct {
   price: number;
   promoted?: boolean;
   author?: string;
+  tags?: string[];
 }

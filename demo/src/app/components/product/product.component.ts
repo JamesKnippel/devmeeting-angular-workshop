@@ -5,7 +5,8 @@ import { IProduct } from '../../app.module';
   selector: 'product-cmp',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './product.component.html'
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
   @Input() product: IProduct;
