@@ -4,6 +4,7 @@
   <search-cmp (search)="onSearch($event)"></search-cmp>
 
   <button (click)="onSort()" class="btn btn-default">
+    <i class="glyphicon glyphicon-arrow-{{ reverse ? 'up' : 'down' }}"></i>
     Price
   </button>
 

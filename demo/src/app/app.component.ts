@@ -65,19 +65,26 @@ export class AppComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.products = this.allProducts;
+    this.products = this.sortItems(this.allProducts, this.reverse);
   }
 
   onSearch(predicate: string): void {
-    this.products = this.allProducts.filter((p: IProduct) => {
-      const values: Array<IProductPropertyValue> = this.getValues(p).map(String).map(this.toLowerCase);
-      return values.some((value: string) => value.includes(predicate.toLowerCase()))
-    });
+    this.products = this.sortItems(
+      this.filterItems(this.allProducts, predicate),
+      this.reverse
+    );
   }
 
   onSort(): void {
     this.reverse = !this.reverse;
     this.products = this.sortItems(this.products, this.reverse);
+  }
+
+  private filterItems(items: IProduct[], predicate: string): any {
+    return items.filter((p: IProduct) => {
+      const values: Array<IProductPropertyValue> = this.getValues(p).map(String).map(this.toLowerCase);
+      return values.some((value: string) => value.includes(predicate.toLowerCase()));
+    })
   }
 
   private sortItems(items: Array<IProduct>, reverse: boolean): Array<IProduct> {
