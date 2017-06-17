@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+export { IProduct } from './interfaces';
+
 @NgModule({
   declarations: [
     AppComponent

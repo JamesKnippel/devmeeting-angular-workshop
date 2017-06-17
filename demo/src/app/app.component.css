@@ -1,0 +1,9 @@
+app-root h2 {
+    text-decoration: underline double;
+}
+
+app-root h3 {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #FF6F00;
+}

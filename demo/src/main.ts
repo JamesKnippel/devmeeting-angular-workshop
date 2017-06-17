@@ -9,7 +9,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-console.log('Angular4 Basics 3');
+console.log('Angular4 Basics (Task 4)');
 
 export function main() {
   platformBrowserDynamic()
