@@ -9,10 +9,9 @@ import { IProduct } from './app.module';
 })
 export class AppComponent implements OnInit {
   public title: string = 'Angular4 Basics';
-  public promotedProducts: IProduct[] = [];
-  public regularProducts: IProduct[] = [];
-
-  private  products: IProduct[] = [
+  public promotedProducts: Array<IProduct> = [];
+  public regularProducts: Array<IProduct> = [];
+  private products: IProduct[] = [
     {
       name: 'Secrets of the JavaScript Ninja',
       description: `For anyone serious about web development, it's not enough to be a decent JavaScript coder. They need to be ninja-stealthy, efficient, and ready for anything. Secrets of the JavaScript Ninja, Second Edition dives below the surface and helps readers understand the deceptively-complex world of JavaScript and browser-based application development. It skips the basics, and dives into core JavaScript concepts such as functions, closures, objects, prototypes, promises, and so on.`,

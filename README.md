@@ -1,4 +1,4 @@
-# Angular4 Basics
+# Components
 
 ## Getting Started 
 ### Dependencies Prerequisites
