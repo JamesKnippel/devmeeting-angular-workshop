@@ -1,7 +1,7 @@
 {
   "name": "devmeeting-angular-workshop",
   "version": "1.0.0",
-  "description": "Angular4 Forms (Task 4)",
+  "description": "Angular4 Routing (Task 1)",
   "author": {
     "name": "Jay Kan",
     "email": "leicasper@gmail.com"
@@ -17,7 +17,7 @@
   "license": "MIT",
   "keywords": [
     "Angular4",
-    "Angular4 Forms"
+    "Angular4 Routing"
   ],
   "dependencies": {
     "@angular/animations": "^4.0.0",
