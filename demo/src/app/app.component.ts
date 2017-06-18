@@ -37,6 +37,6 @@ export class AppComponent implements OnInit {
   }
 
   onOrder(order: IOrder): void {
-    console.log(`%cOrder data: ${JSON.stringify(order, null, 4)}`, 'color:red');
+    console.log(`%cOrder Form: ${JSON.stringify(order, null, 4)}`, 'color:black; font-size:large;');
   }
 }

@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, Output, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from  '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from  '@angular/forms';
 import { IOrder } from '../../app.module';
 
 @Component({
@@ -16,12 +16,12 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      firstName: '',
-      lastName: '',
-      address: '',
-      email: '',
-      productName: '',
-      productQuantity: 0
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', Validators.required],
+      productName: ['', Validators.required],
+      productQuantity: [0, Validators.required]
     });
   }
 
