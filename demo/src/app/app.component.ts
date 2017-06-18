@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation, OnInit, Inject } from '@angular/core';
-import { IProduct, ISortOptions, IProductService } from './app.module';
+import { IProduct, ISortOptions, IProductService, IOrder} from './app.module';
 import { ProductsServiceToken } from './services/products.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductsServiceToken } from './services/products.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public title: string = 'Angular4 Http and RxJS';
+  public title: string = 'Angular4 Forms';
   public products: Array<IProduct> = [];
   public sort: ISortOptions = {
     property: 'price',
@@ -34,5 +34,9 @@ export class AppComponent implements OnInit {
       property: sortBy,
       reverse: !this.sort.reverse
     };
+  }
+
+  onOrder(order: IOrder): void {
+    console.log(`%cOrder data: ${JSON.stringify(order, null, 4)}`, 'color:red');
   }
 }

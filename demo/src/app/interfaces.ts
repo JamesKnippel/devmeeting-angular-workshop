@@ -19,3 +19,12 @@ export interface ISortOptions {
 export interface IProductService {
   getProducts(): Observable<Array<IProduct>>;
 }
+
+export interface IOrder {
+  firstName: string;
+  lastName: string;
+  address: string;
+  email: string;
+  productName: string;
+  productQuantity: number;
+}

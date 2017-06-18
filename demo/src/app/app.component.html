@@ -1,13 +1,15 @@
 <div class="container">
   <h2>{{ title }}</h2>
 
+  <order-form-cmp (onSubmit)="onOrder($event)"></order-form-cmp>
+
   <search-cmp (search)="onSearch($event)"></search-cmp>
 
-  <sort-button *ngFor="let sortProperty of ['price', 'name']"
+  <sort-button-cmp *ngFor="let sortProperty of ['price', 'name']"
                [property]="sortProperty"
                [sort]="sort"
                (sortChange)="onSort($event)"
-  ></sort-button>
+  ></sort-button-cmp>
 
   <product-list-cmp
     [header]="'Product Listing'"

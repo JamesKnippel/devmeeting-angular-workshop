@@ -8,8 +8,11 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { SearchComponent } from './components/search/search.component';
 import { SortButtonComponent } from './components/sort-button/sort-button.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
+
 import { FilterElementsPipe } from './pipes/filterElements.pipe';
 import { SortElementsPipe } from './pipes/sortElements.pipe';
+
 import { ProductsJSONService, ProductsServiceToken } from './services/products.service';
 
 export * from './interfaces';
@@ -22,6 +25,7 @@ export * from './utils';
     ProductListComponent,
     SearchComponent,
     SortButtonComponent,
+    OrderFormComponent,
 
     FilterElementsPipe,
     SortElementsPipe,
@@ -35,7 +39,7 @@ export * from './utils';
     {
       provide: ProductsServiceToken,
       useClass: ProductsJSONService
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

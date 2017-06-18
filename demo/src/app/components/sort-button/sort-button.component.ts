@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation, Input, Output, EventEmitter } from '@angu
 import { ISortOptions } from '../../app.module';
 
 @Component({
-  selector: 'sort-button',
+  selector: 'sort-button-cmp',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './sort-button.component.html',
   styleUrls: ['./sort-button.component.css']
