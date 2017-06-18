@@ -32,3 +32,10 @@ export interface IOrder {
 export interface INaturalNumber {
   naturalNumber: boolean;
 }
+
+export interface IEmail {
+  email: boolean;
+}
+
+export type INaturalNumberValidator = INaturalNumber | null;
+export type IEmailValidator = IEmail | null;

@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from  '@angular/forms';
-import { IOrder, NaturalNumberValidator } from '../../app.module';
+import { IOrder, NaturalNumberValidator, EmailValidator } from '../../app.module';
 
 @Component({
   selector: 'order-form-cmp',
@@ -16,14 +16,17 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      firstName: ['J', Validators.required],
-      lastName: ['K', Validators.required],
-      address: ['123', Validators.required],
-      email: ['j@gmail.com', Validators.required],
-      productName: ['Jay', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', [
+        Validators.required,
+        EmailValidator,
+      ]],
+      productName: ['', Validators.required],
       productQuantity: [0, [
         Validators.required,
-        NaturalNumberValidator
+        NaturalNumberValidator,
       ]]
     });
   }
