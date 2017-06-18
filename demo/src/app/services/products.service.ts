@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
 
 @Injectable()
 export class ProductsService implements IProductService {
@@ -69,6 +70,7 @@ export class ProductsJSONService implements IProductService {
 
   getProducts(): Observable<Array<IProduct>> {
     return this.http.get('data/products.json')
+      .retry(5)
       .map((response: Response) => response.json());
   }
 }
