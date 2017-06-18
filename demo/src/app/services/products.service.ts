@@ -13,7 +13,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class ProductsService implements IProductService {
+export class ProductsInMemoryService implements IProductService {
   private products: Observable<Array<IProduct>> = Observable.of([
     {
       id: 1,
@@ -71,14 +71,14 @@ export class ProductsService implements IProductService {
     }
   ]);
 
-  getProducts(): Observable<Array<IProduct>> {
+  getProducts(): Observable<IProduct[]> {
     return this.products;
   }
 
   getProductById(id: number): Observable<IProduct> {
     return this.getProducts().map((products: IProduct[]) => {
       return products.find((p: IProduct) => p.id === id);
-    });
+    }).catch(error => Observable.throw(null));
   }
 }
 
