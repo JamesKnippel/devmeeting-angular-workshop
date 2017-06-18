@@ -17,6 +17,7 @@ import { ProductsJSONService, ProductsServiceToken } from './services/products.s
 
 export * from './interfaces';
 export * from './utils';
+export * from './validators';
 
 @NgModule({
   declarations: [

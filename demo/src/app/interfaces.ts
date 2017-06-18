@@ -28,3 +28,7 @@ export interface IOrder {
   productName: string;
   productQuantity: number;
 }
+
+export interface INaturalNumber {
+  naturalNumber: boolean;
+}
