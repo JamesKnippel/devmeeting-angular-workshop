@@ -20,6 +20,8 @@ import { SortElementsPipe } from './pipes/sortElements.pipe';
 
 import { ProductsJSONService, ProductsServiceToken } from './services/products.service';
 
+import { PromotedProductDirective } from './directives/promoted.directive';
+
 import { ROUTES } from './app.routes';
 
 export * from './interfaces';
@@ -43,6 +45,8 @@ export * from './validators';
 
     FilterElementsPipe,
     SortElementsPipe,
+
+    PromotedProductDirective,
   ],
   imports: [
     BrowserModule,

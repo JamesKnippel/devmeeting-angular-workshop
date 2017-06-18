@@ -1,4 +1,4 @@
-# Testing
+# Directives
 
 ## Getting Started 
 ### Dependencies Prerequisites
