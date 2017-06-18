@@ -1,0 +1,7 @@
+<ul class="nav nav-pills">
+
+  <li role="presentation" *ngFor="let item of menus">
+    <a [routerLink]="[item.path]">{{ item.name }}</a>
+  </li>
+
+</ul>

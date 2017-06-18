@@ -12,6 +12,7 @@ import { SortButtonComponent } from './components/sort-button/sort-button.compon
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { ProductsContainerComponent } from './containers/products-container/products-container.component';
 import { OrderContainerComponent } from './containers/order-container/order-container.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 import { FilterElementsPipe } from './pipes/filterElements.pipe';
 import { SortElementsPipe } from './pipes/sortElements.pipe';
@@ -36,6 +37,7 @@ export * from './validators';
     SearchComponent,
     SortButtonComponent,
     OrderFormComponent,
+    NavigationComponent,
 
     FilterElementsPipe,
     SortElementsPipe,

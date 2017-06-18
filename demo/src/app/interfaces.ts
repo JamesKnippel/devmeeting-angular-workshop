@@ -39,3 +39,8 @@ export interface IEmail {
 
 export type INaturalNumberValidator = INaturalNumber | null;
 export type IEmailValidator = IEmail | null;
+
+export interface IMenuItem {
+  name: string;
+  path: string;
+}
