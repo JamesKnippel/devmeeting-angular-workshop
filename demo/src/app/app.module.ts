@@ -10,7 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SortButtonComponent } from './components/sort-button/sort-button.component';
 import { FilterElementsPipe } from './pipes/filterElements.pipe';
 import { SortElementsPipe } from './pipes/sortElements.pipe';
-import { ProductsService, ProductsJSONService } from './services/products.service';
+import { ProductsJSONService, ProductsServiceToken } from './services/products.service';
 
 export * from './interfaces';
 export * from './utils';
@@ -32,8 +32,10 @@ export * from './utils';
     HttpModule,
   ],
   providers: [
-    ProductsService,
-    ProductsJSONService,
+    {
+      provide: ProductsServiceToken,
+      useClass: ProductsJSONService
+    }
   ],
   bootstrap: [AppComponent]
 })

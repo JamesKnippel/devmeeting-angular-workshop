@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { IProduct, ISortOptions } from './app.module';
-import { ProductsJSONService } from './services/products.service';
+import { Component, ViewEncapsulation, OnInit, Inject } from '@angular/core';
+import { IProduct, ISortOptions, IProductService } from './app.module';
+import { ProductsServiceToken } from './services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   };
   public predicate: string = '';
 
-  constructor(private productsService: ProductsJSONService) {}
+  constructor(@Inject(ProductsServiceToken) private productsService: IProductService) {}
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((data: Array<IProduct>) => {

@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { IProduct } from '../app.module';
+import { Injectable, InjectionToken } from '@angular/core';
+import { IProduct, IProductService } from '../app.module';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ProductsService {
-  private products: Array<IProduct> = [
+export class ProductsService implements IProductService {
+  private products: Observable<Array<IProduct>> = new BehaviorSubject([
     {
       name: 'Secrets of the JavaScript Ninja',
       description: `For anyone serious about web development, it's not enough to be a decent JavaScript coder. They need to be ninja-stealthy, efficient, and ready for anything. Secrets of the JavaScript Ninja, Second Edition dives below the surface and helps readers understand the deceptively-complex world of JavaScript and browser-based application development. It skips the basics, and dives into core JavaScript concepts such as functions, closures, objects, prototypes, promises, and so on.`,
@@ -55,15 +56,15 @@ export class ProductsService {
       promoted: true,
       tags: ['JavaScript', 'ES6', 'ES7']
     }
-  ];
+  ]);
 
-  getProducts(): Array<IProduct> {
-    return this.products.slice();
+  getProducts(): Observable<Array<IProduct>> {
+    return this.products;
   }
 }
 
 @Injectable()
-export class ProductsJSONService {
+export class ProductsJSONService implements IProductService {
   constructor(private http: Http) {}
 
   getProducts(): Observable<Array<IProduct>> {
@@ -71,3 +72,5 @@ export class ProductsJSONService {
       .map((response: Response) => response.json());
   }
 }
+
+export const ProductsServiceToken = new InjectionToken('ProductsService');

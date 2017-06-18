@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface IProduct {
   name: string;
   description: string;
@@ -12,4 +14,8 @@ export type IProductPropertyValue = string | number | boolean | string[];
 export interface ISortOptions {
   property: string;
   reverse: boolean;
+}
+
+export interface IProductService {
+  getProducts(): Observable<Array<IProduct>>;
 }
