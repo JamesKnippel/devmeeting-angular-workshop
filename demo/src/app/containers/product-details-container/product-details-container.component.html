@@ -1,0 +1,6 @@
+<div class="list-group-item" *ngIf="product">
+  <a [routerLink]="['']" class="back">
+    <span class="label label-primary">Back</span>
+  </a>
+  <product-cmp [product]="product"></product-cmp>
+</div>

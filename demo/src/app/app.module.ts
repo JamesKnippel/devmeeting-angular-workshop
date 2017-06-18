@@ -11,6 +11,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SortButtonComponent } from './components/sort-button/sort-button.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { ProductsContainerComponent } from './containers/products-container/products-container.component';
+import { ProductDetailsContainerComponent } from './containers/product-details-container/product-details-container.component';
 import { OrderContainerComponent } from './containers/order-container/order-container.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
@@ -30,6 +31,7 @@ export * from './validators';
     AppComponent,
 
     ProductsContainerComponent,
+    ProductDetailsContainerComponent,
     OrderContainerComponent,
 
     ProductComponent,

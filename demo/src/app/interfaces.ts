@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs/Observable';
 
 export interface IProduct {
+  id: number;
   name: string;
   description: string;
   price: number;
@@ -18,6 +19,7 @@ export interface ISortOptions {
 
 export interface IProductService {
   getProducts(): Observable<Array<IProduct>>;
+  getProductById(id: number): Observable<IProduct>
 }
 
 export interface IOrder {

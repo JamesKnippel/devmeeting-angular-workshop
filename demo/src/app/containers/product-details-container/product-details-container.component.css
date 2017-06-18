@@ -1,0 +1,11 @@
+product-details-container-cmp {
+    display: block;
+    position: relative;
+    margin: 20px 0;
+}
+
+product-details-container-cmp a.back {
+    float: right;
+    display: inline-block;
+    margin-right: 5px;
+}

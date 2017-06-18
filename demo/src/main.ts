@@ -9,7 +9,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-console.log('Angular4 Routing (Task 3)');
+console.log('Angular4 Routing (Task 4)');
 
 export function main() {
   platformBrowserDynamic()
