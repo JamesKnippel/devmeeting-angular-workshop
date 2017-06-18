@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { IProduct, ISortOptions } from './app.module';
-import { ProductsService } from './services/products.service';
+import { ProductsJSONService } from './services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { ProductsService } from './services/products.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public title: string = 'Angular4 Services and Dependency Injection';
+  public title: string = 'Angular4 Http and RxJS';
   public products: Array<IProduct> = [];
   public sort: ISortOptions = {
     property: 'price',
@@ -17,10 +17,12 @@ export class AppComponent implements OnInit {
   };
   public predicate: string = '';
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsJSONService) {}
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts();
+    this.productsService.getProducts().subscribe((data: Array<IProduct>) => {
+      this.products = data;
+    });
   }
 
   onSearch(predicate: string): void {

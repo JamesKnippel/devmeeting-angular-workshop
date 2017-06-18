@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
@@ -9,7 +10,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SortButtonComponent } from './components/sort-button/sort-button.component';
 import { FilterElementsPipe } from './pipes/filterElements.pipe';
 import { SortElementsPipe } from './pipes/sortElements.pipe';
-import { ProductsService } from './services/products.service';
+import { ProductsService, ProductsJSONService } from './services/products.service';
 
 export * from './interfaces';
 export * from './utils';
@@ -28,9 +29,11 @@ export * from './utils';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpModule,
   ],
   providers: [
     ProductsService,
+    ProductsJSONService,
   ],
   bootstrap: [AppComponent]
 })

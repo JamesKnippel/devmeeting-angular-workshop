@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../app.module';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ProductsService {
@@ -56,5 +59,15 @@ export class ProductsService {
 
   getProducts(): Array<IProduct> {
     return this.products.slice();
+  }
+}
+
+@Injectable()
+export class ProductsJSONService {
+  constructor(private http: Http) {}
+
+  getProducts(): Observable<Array<IProduct>> {
+    return this.http.get('data/products.json')
+      .map((response: Response) => response.json());
   }
 }

@@ -9,7 +9,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-console.log('Angular4 Services and Dependency Injection (Task 2)');
+console.log('Angular4 Http and RxJS (Task 1)');
 
 export function main() {
   platformBrowserDynamic()
