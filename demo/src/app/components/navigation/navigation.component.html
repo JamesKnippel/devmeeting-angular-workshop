@@ -1,6 +1,6 @@
 <ul class="nav nav-pills">
 
-  <li role="presentation" *ngFor="let item of menus">
+  <li role="presentation" *ngFor="let item of menus" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
     <a [routerLink]="[item.path]">{{ item.name }}</a>
   </li>
 
